@@ -1,0 +1,38 @@
+<%- include('includes/head.ejs', { title: 'Your Cart' }) %>
+<link rel="stylesheet" href="/styles/cart.css">
+<script src="/scripts/cart-item-management.js" defer></script>
+</head>
+<body>
+    <%- include('includes/header.ejs') %>
+    <main>
+        <h1>Your Cart</h1>
+        <ul id="cart-items">
+            <% for (const cartItem of locals.cart.items) { %>
+            <li>
+                <article class="cart-item">
+                    <div class="cart-item-info">
+                        <h2><%= cartItem.product.title %></h2>
+                        <p><span class="cart-item-price"><%= cartItem.totalPrice.toFixed(2) %></span>€ (<%= cartItem.product.price.toFixed(2) %>€)</p>
+                    </div>
+                    <form class="cart-item-management" data-productid="<%= cartItem.product.id %>" data-csrf="<%= locals.csrfToken %>">
+                        <input type="number" value="<%= cartItem.quantity %>" required>
+                        <button class="a-btn">Update</button>
+                    </form>
+                </article>
+            </li>
+            <% } %>
+        </ul>
+        <div id="cart-total">
+            <p>Total: <span id="cart-total-price"><%= locals.cart.totalPrice.toFixed(2) %></span>€</p>
+            <% if (locals.isAuth && locals.cart.totalQuantity > 0) { %>
+                <form action="/orders" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                    <button class="btn">Buy Products</button>
+                </form>
+            <% } else { %>
+                <p>Log in and add items to proceed and purchase.</p>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>

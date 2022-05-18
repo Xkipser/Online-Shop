@@ -1,0 +1,53 @@
+.form-blueprint {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(204, 204, 204);
+}
+
+#main-info {
+    margin-bottom: 3rem;
+}
+
+#div-btn {
+    display: flex;
+    width: 25%;
+    justify-content: space-evenly;
+}
+
+#edit-div-btn {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#image {
+    max-width: 15rem;
+    padding: 0;
+    border: none;
+    font-size: 1rem;
+}
+
+#image-picked {
+    display: flex;
+    align-items: center;
+}
+
+#image-picked img  {
+    display: none;
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 4px;
+}

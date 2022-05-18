@@ -1,0 +1,25 @@
+<header id="main-header">
+    <h1><a id="logo" href="/">WDE</a></h1>
+    <nav>
+        <ul>
+            <% if (locals.isAuth && !locals.isAdmin || !locals.isAuth) { %>
+                <li><a class="a-nav" href="/shop">Shop</a></li>
+                <li><a class="a-nav" href="/cart">Cart<span class="badge"><%= locals.cart.totalQuantity %></span></a></li>
+            <% } %>
+            <% if (locals.isAuth && !locals.isAdmin) { %>
+                <li><a class="a-nav" href="/orders">Orders</a></li>
+            <% } %>
+            <% if (locals.isAdmin) { %>
+                <li><a class="a-nav" href="/admin/manage-prod">Manage Products</a></li>
+                <li><a class="a-nav" href="/admin/manage-order">Manage Orders</a></li>
+            <% } %>
+            <% if (!locals.isAuth) { %>
+                <li><a class="a-nav" href="/signup">Signup</a></li>
+                <li><a class="a-nav" href="/login">Login</a></li>
+            <% } else { %>
+                <li><a id="a-btn" href="/logout">Logout</a></li>
+            <% } %>
+        </ul>
+    </nav>
+    <hr>
+</header>

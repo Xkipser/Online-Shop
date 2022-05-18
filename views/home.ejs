@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs', { title: 'Home' }) %>
+<link rel="stylesheet" href="/styles/products.css">
+</head>
+<body>
+    <%- include('includes/header.ejs') %>
+    <main>
+        <h1>All Products</h1>
+        <div>
+            <ul>
+                <% for (const product of products) { %>
+                    <li class="prod-container">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                        <h2><%= product.title %></h2>
+                        <a class="a-btn" href="/view-prod/<%= product.id %>">View details</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

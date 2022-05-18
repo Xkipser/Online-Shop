@@ -1,0 +1,27 @@
+<%- include('includes/head.ejs', { title: 'Login' }) %>
+<link rel="stylesheet" href="/styles/forms.css">
+</head>
+<body>
+    <%- include('includes/header.ejs') %>
+    <main>
+        <h1>Login</h1>
+        <div>
+            <% if (inputData.hasError) { %>
+                <p id="input-error"><%= inputData.message %></p>
+            <% } %>
+            <form action="/login" method="POST">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                
+                <label for="emial">E-Mail</label>
+                <input type="email" name="email" id="email" value="<%= inputData.email %>" required>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="<%= inputData.password %>" required>
+
+                <button class="btn">Login</button>
+            </form>
+            <a id="alt-btn" href="/signup">Create new user</a>
+        </div>
+    </main>
+</body>
+</html>

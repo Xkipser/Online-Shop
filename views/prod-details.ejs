@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs', { title: 'Product Details' }) %>
+<link rel="stylesheet" href="/styles/products.css">
+<script src="/scripts/cart-management.js" defer></script>
+</head>
+<body>
+    <%- include('includes/header.ejs') %>
+    <main id="prod-details">
+        <header>
+            <img src="<%= prodDetail.imageUrl %>" alt="<%= prodDetail.title %>">
+            <div id="prod-info">
+                <div>
+                    <h1><%= prodDetail.title %></h1>
+                    <p><%= prodDetail.price %>€</p>
+                </div>
+                <button data-productid="<%= prodDetail.id %>" data-csrf="<%= locals.csrfToken %>">Add to Cart</button>
+            </div>
+        </header>
+        <p id="prod-description"><%= prodDetail.discription %></p>
+    </main>
+</body>
+</html>
